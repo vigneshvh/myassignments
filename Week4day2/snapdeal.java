@@ -52,14 +52,14 @@ public class snapdeal {
 		driver.findElement(By.xpath("(//li[@class='search-li'])[1]")).click();
 
 		Thread.sleep(2000);
-		System.out.println("Sorted price");
-		// to add sort
-		List<WebElement> sorted = driver.findElements(By.xpath("//span[@class='lfloat product-price']"));
-		for (WebElement webElement : sorted) {
+		
+		String sort = driver.findElement(By.xpath("//div[@class='sort-drop clearfix']/div")).getText();
+		System.out.println(sort);
 
-			System.out.println(webElement.getText());
-
-		}
+		if (sort.contains("Low To High")) {
+			System.out.println("items displayed correctly");
+		} else
+			System.out.println("not listed correctly");
 
 		driver.findElement(By.name("fromVal")).clear();
 		driver.findElement(By.name("fromVal")).sendKeys("499");
